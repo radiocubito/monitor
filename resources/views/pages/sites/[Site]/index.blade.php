@@ -1,15 +1,33 @@
 <?php
 
+use App\Models\Endpoint;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 use function Laravel\Folio\middleware;
 use function Laravel\Folio\name;
-use function Laravel\Folio\render;
+use function Livewire\Volt\state;
 
 middleware(['auth', 'verified']);
 
 name('sites.show');
+
+$getEndpoints = function ($site) {
+    return $this->endpoints = $site->endpoints;
+};
+
+state([
+    'site' => fn () => $site,
+    'endpoints' => $getEndpoints,
+]);
+
+$delete = function (Endpoint $endpoint) {
+    $this->authorize('delete', $endpoint);
+
+    $endpoint->delete();
+
+    $this->getEndpoints($this->site);
+};
 
 ?>
 
@@ -20,12 +38,17 @@ name('sites.show');
             <a href="/sites/{{ $site->id }}/endpoints/create" class="underline">Crear endpoint</a>
         </div>
 
-        <div class="space-y-1">
-            @foreach($site->endpoints as $endpoint)
-                <span class="block">
-                    {{ $endpoint->location }}, {{ $endpoint->frequency_label }}
-                </span>
-            @endforeach
-        </div>
+        @volt('endpoint-list')
+            <div class="space-y-1">
+                @foreach($endpoints as $endpoint)
+                    <div class="block" wire:key="{{ $endpoint->id }}">
+                        {{ $endpoint->location }}, {{ $endpoint->frequency_label }},
+                        <button type="button" wire:click="delete({{ $endpoint->id }})">
+                            eliminar
+                        </button>
+                    </div>
+                @endforeach
+            </div>
+        @endvolt
     </div>
 </x-layouts>
