@@ -23,7 +23,7 @@ name('sites.show');
         <div class="space-y-1">
             @foreach($site->endpoints as $endpoint)
                 <span class="block">
-                    {{ $endpoint->location }}, {{ $endpoint->frequency }}
+                    {{ $endpoint->location }}, {{ $endpoint->frequency_label }}
                 </span>
             @endforeach
         </div>
