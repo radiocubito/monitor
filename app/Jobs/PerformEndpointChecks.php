@@ -31,11 +31,14 @@ class PerformEndpointChecks implements ShouldQueue
     {
         try {
             $response = Http::get($this->endpoint->url());
-
-            ray($response);
         } catch (Exception $e) {
             //
         }
+
+        $this->endpoint->checks()->create([
+            'response_code' => $response->status(),
+            'response_body' => !$response->successful() ? $response->body() : null,
+        ]);
 
         $this->endpoint->update([
             'next_check' => now()->addSeconds($this->endpoint->frequency),

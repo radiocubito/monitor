@@ -33,6 +33,16 @@ class Endpoint extends Model
         return $this->belongsTo(Site::class);
     }
 
+    public function checks()
+    {
+        return $this->hasMany(Check::class);
+    }
+
+    public function check()
+    {
+        return $this->hasOne(Check::class)->latestOfMany();
+    }
+
     public function url()
     {
         return $this->site->url() . $this->location;
