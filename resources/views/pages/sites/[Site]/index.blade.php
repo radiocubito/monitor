@@ -43,6 +43,7 @@ $delete = function (Endpoint $endpoint) {
                 @foreach($endpoints as $endpoint)
                     <div class="block" wire:key="{{ $endpoint->id }}">
                         {{ $endpoint->location }}, {{ $endpoint->frequency_label }},
+                        <a href="{{ route('endpoint.edit', ['endpoint' => $endpoint]) }}">Editar</a>,
                         <button type="button" wire:click="delete({{ $endpoint->id }})">
                             eliminar
                         </button>

@@ -37,7 +37,7 @@ class EndpointPolicy
      */
     public function update(User $user, Endpoint $endpoint): bool
     {
-        //
+        return $user->id === $endpoint->site->user_id;
     }
 
     /**
