@@ -32,4 +32,9 @@ class Endpoint extends Model
     {
         return $this->belongsTo(Site::class);
     }
+
+    public function url()
+    {
+        return $this->site->url() . $this->location;
+    }
 }
