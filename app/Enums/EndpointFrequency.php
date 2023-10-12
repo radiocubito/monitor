@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum EndpointFrecuency: int
+enum EndpointFrequency: int
 {
     case ONE_MINUTE = 1 * 60;
     case FIVE_MINUTES = 5 * 60;
