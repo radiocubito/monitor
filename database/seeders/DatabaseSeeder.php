@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Site;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,9 +17,23 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $user = User::factory()->create([
+            'name' => 'Oliver Servín',
+            'email' => 'oliver@radiocubito.com',
+        ]);
+
+        Site::factory()->create([
+            'user_id' => $user->id,
+            'scheme' => 'http',
+            'domain' => 'radiocubito.com',
+            'default' => 0,
+        ]);
+
+        Site::factory()->create([
+            'user_id' => $user->id,
+            'scheme' => 'http',
+            'domain' => 'oliverservin.com',
+            'default' => 0,
+        ]);
     }
 }
