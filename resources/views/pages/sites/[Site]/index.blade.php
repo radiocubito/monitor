@@ -56,8 +56,25 @@ $delete = function (Endpoint $endpoint) {
                         <tr wire:key="{{ $endpoint->id }}">
                             <td>{{ $endpoint->location }}</td>
                             <td>{{ $endpoint->frequency_label }}</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>
+                                @if($endpoint->check)
+                                    {{ $endpoint->check->created_at->toDateTimeString() }}
+                                @else
+                                    -
+                                @endif
+                            </td>
+                            <td>
+                                @if($endpoint->check)
+                                    <span @class([
+                                        'text-green-600' => $endpoint->check->isSuccessful(),
+                                        'text-red-600' => ! $endpoint->check->isSuccessful(),
+                                    ])>
+                                        {{ $endpoint->check->response_code }} {{ $endpoint->check->statusText() }}
+                                    </span>
+                                @else
+                                    -
+                                @endif
+                            </td>
                             <td>-</td>
                             <td>
                                 <a href="{{ route('endpoint.edit', ['endpoint' => $endpoint]) }}">Editar</a>
