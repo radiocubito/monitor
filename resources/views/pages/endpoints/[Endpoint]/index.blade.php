@@ -1,10 +1,14 @@
 <?php
 
+use App\Models\Endpoint;
+use Illuminate\View\View;
+
 use function Laravel\Folio\middleware;
 use function Laravel\Folio\name;
+use function Laravel\Folio\render;
 use function Livewire\Volt\state;
 
-middleware(['auth', 'verified']);
+middleware(['auth', 'verified', 'can:view,endpoint']);
 
 name('endpoints.show');
 
@@ -50,7 +54,7 @@ state([
                             </td>
                             <td>
                                 @if ($check->response_body)
-                                    <pre>{{ $check->response_body }}</pre>
+                                    <textarea rows="10">{{ $check->response_body }}</textarea>
                                 @endif
                             </td>
                         </tr>
