@@ -12,7 +12,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Http;
 
-class PerformEndpointChecks implements ShouldQueue
+class PerformEndpointChecks implements ShouldQueue, ShouldBeUnique
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -22,6 +22,11 @@ class PerformEndpointChecks implements ShouldQueue
     public function __construct(public Endpoint $endpoint)
     {
         //
+    }
+
+    public function uniqueId()
+    {
+        return 'endpoint_check_' . $this->endpoint->id;
     }
 
     /**
