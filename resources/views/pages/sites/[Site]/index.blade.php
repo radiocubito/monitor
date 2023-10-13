@@ -39,17 +39,38 @@ $delete = function (Endpoint $endpoint) {
         </div>
 
         @volt('endpoint-list')
-            <div class="space-y-1">
-                @foreach($endpoints as $endpoint)
-                    <div class="block" wire:key="{{ $endpoint->id }}">
-                        {{ $endpoint->location }}, {{ $endpoint->frequency_label }},
-                        <a href="{{ route('endpoint.edit', ['endpoint' => $endpoint]) }}">Editar</a>,
-                        <button type="button" wire:click="delete({{ $endpoint->id }})">
-                            eliminar
-                        </button>
-                    </div>
-                @endforeach
-            </div>
+            <table class="border-collapse table-auto w-full">
+                <thead>
+                    <tr>
+                        <th class="text-left">Ubicación</th>
+                        <th class="text-left">Frecuencia</th>
+                        <th class="text-left">Revisado por última vez</th>
+                        <th class="text-left">Último estado</th>
+                        <th class="text-left">Uptime</th>
+                        <th class="text-left"></th>
+                        <th class="text-left"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($endpoints as $endpoint)
+                        <tr wire:key="{{ $endpoint->id }}">
+                            <td>{{ $endpoint->location }}</td>
+                            <td>{{ $endpoint->frequency_label }}</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>
+                                <a href="{{ route('endpoint.edit', ['endpoint' => $endpoint]) }}">Editar</a>
+                            </td>
+                            <td>
+                                <button type="button" wire:click="delete({{ $endpoint->id }})">
+                                    Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         @endvolt
     </div>
 </x-layouts>
