@@ -54,7 +54,9 @@ $delete = function (Endpoint $endpoint) {
                 <tbody>
                     @foreach($endpoints as $endpoint)
                         <tr wire:key="{{ $endpoint->id }}">
-                            <td>{{ $endpoint->location }}</td>
+                            <td>
+                                <a href="{{ route('endpoints.show', ['endpoint' => $endpoint]) }}">{{ $endpoint->location }}</a>
+                            </td>
                             <td>{{ $endpoint->frequency_label }}</td>
                             <td>
                                 @if($endpoint->check)
