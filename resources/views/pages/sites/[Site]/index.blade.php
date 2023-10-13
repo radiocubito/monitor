@@ -77,7 +77,13 @@ $delete = function (Endpoint $endpoint) {
                                     -
                                 @endif
                             </td>
-                            <td>-</td>
+                            <td>
+                                @if ($endpoint->uptimePercentage() !== null)
+                                    {{ $endpoint->uptimePercentage() }}%
+                                @else
+                                    -
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{ route('endpoint.edit', ['endpoint' => $endpoint]) }}">Editar</a>
                             </td>
