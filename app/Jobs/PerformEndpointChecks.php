@@ -40,10 +40,17 @@ class PerformEndpointChecks implements ShouldQueue, ShouldBeUnique
             //
         }
 
-        $this->endpoint->checks()->create([
+        $check = $this->endpoint->checks()->create([
             'response_code' => $response->status(),
             'response_body' => !$response->successful() ? $response->body() : null,
         ]);
+
+        if (
+            !$check->isSuccessful() &&
+            ($check->previous()?->isSuccessful() || $check->endpoint->checks->count() === 1)
+        ) {
+            //
+        }
 
         $this->endpoint->update([
             'next_check' => now()->addSeconds($this->endpoint->frequency),

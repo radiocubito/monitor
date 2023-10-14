@@ -29,4 +29,9 @@ class Check extends Model
     {
         return Response::$statusTexts[$this->response_code] ?? 'Desconocido';
     }
+
+    public function previous()
+    {
+        return $this->endpoint->checks()->orderBy('id', 'desc')->where('id', '<', $this->id)->first();
+    }
 }
