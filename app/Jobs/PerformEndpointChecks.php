@@ -56,7 +56,7 @@ class PerformEndpointChecks implements ShouldQueue, ShouldBeUnique
 
         if (
             $check->isSuccessful() &&
-            !$check->previous()?->isSuccessful() && $check->endpoint->checks->count() > 1
+            !$check->previous()?->isSuccessful() && $check->endpoint->checks->count() !== 1
         ) {
             EndpointRecovered::dispatch($check);
         }
