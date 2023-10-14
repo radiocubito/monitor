@@ -46,8 +46,8 @@ state([
                             </td>
                             <td>
                                 <span @class([
-                                    'text-green-600' => $endpoint->check->isSuccessful(),
-                                    'text-red-600' => ! $endpoint->check->isSuccessful(),
+                                    'text-green-600' => $check->isSuccessful(),
+                                    'text-red-600' => ! $check->isSuccessful(),
                                 ])>
                                     {{ $check->response_code }} {{ $check->statusText() }}
                                 </span>

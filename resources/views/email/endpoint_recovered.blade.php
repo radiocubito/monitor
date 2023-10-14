@@ -1,0 +1,1 @@
+Endpoint {{ $endpoint->id }} recovered.
