@@ -1,8 +1,10 @@
 <?php
 
 use App\Models\Endpoint;
+use App\Models\Site;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Spatie\ValidationRules\Rules\Delimited;
 
 use function Laravel\Folio\middleware;
 use function Laravel\Folio\name;
@@ -19,6 +21,7 @@ $getEndpoints = function ($site) {
 state([
     'site' => fn () => $site,
     'endpoints' => $getEndpoints,
+    'emails' => fn () => $this->site->notification_emails,
 ]);
 
 $delete = function (Endpoint $endpoint) {
@@ -27,6 +30,19 @@ $delete = function (Endpoint $endpoint) {
     $endpoint->delete();
 
     $this->getEndpoints($this->site);
+};
+
+$updateEmails = function (Site $site) {
+    // dd('jhsdf');
+    // $this->authorize('delete', $endpoint);
+
+    $validated = $this->validate([
+        'emails' => [new Delimited('email')],
+    ]);
+
+    $site->update([
+        'notification_emails' => $this->emails,
+    ]);
 };
 
 ?>
@@ -96,6 +112,17 @@ $delete = function (Endpoint $endpoint) {
                     @endforeach
                 </tbody>
             </table>
+        @endvolt
+
+        @volt('emails')
+            <form wire:submit="updateEmails({{ $site->id }})" class="space-y-2 mt-5">
+                <h2>Emails para notificaciones:</h2>
+                <input wire:model="emails" name="emails" type="text" class="block">
+                @error('emails')
+                    <div class="text-red-600">{{ $message }}</div>
+                @enderror
+                <button class="border px-3 py-1 border-gray-500">Guardar</button>
+            </form>
         @endvolt
     </div>
 </x-layouts>

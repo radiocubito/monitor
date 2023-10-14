@@ -13,6 +13,7 @@ class Site extends Model
         'default',
         'domain',
         'scheme',
+        'notification_emails',
     ];
 
     public function user()

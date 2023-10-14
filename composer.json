@@ -14,7 +14,8 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
         "livewire/volt": "^1.0",
-        "spatie/laravel-short-schedule": "^1.5"
+        "spatie/laravel-short-schedule": "^1.5",
+        "spatie/laravel-validation-rules": "^3.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
