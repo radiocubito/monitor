@@ -47,7 +47,14 @@ $createEndpoint = function () {
 
 ?>
 
-<x-layouts.proto>
+<x-layouts.app>
+    <x-slot name="title">
+        <div class="flex items-center">
+            <span class="text-palette-800 w-full text-lg font-medium lowercase">
+                Crear endpoint
+            </span>
+        </div>
+    </x-slot>
     <div class="p-6">
         <h1 class="text-xl font-medium">Crear endpoint</h1>
 
@@ -69,4 +76,4 @@ $createEndpoint = function () {
             </form>
         @endvolt
     </div>
-</x-layouts.proto>
+</x-layouts.app>

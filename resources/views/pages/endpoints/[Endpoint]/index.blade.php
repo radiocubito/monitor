@@ -23,12 +23,15 @@ state([
 
 ?>
 
-<x-layouts.proto>
-    <div class="p-6 space-y-5">
-        <div>
-            <h1 class="font-medium text-lg">{{ $endpoint->url() }}</h1>
+<x-layouts.app>
+    <x-slot name="title">
+        <div class="flex items-center">
+            <span class="text-palette-800 w-full text-lg font-medium lowercase">
+            {{ $endpoint->url() }}
+            </span>
         </div>
-
+    </x-slot>
+    <div class="p-6 space-y-5">
         @volt('check-list')
             <table class="border-collapse table-auto w-full">
                 <thead>
@@ -63,4 +66,4 @@ state([
             </table>
         @endvolt
     </div>
-</x-layouts>
+</x-layouts.app>

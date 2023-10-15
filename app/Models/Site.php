@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Site extends Model
 {
@@ -33,5 +34,10 @@ class Site extends Model
     public function url()
     {
         return $this->scheme . '://' . $this->domain;
+    }
+
+    public function shortLabel()
+    {
+        return Str::of($this->domain)->limit(2, '');
     }
 }

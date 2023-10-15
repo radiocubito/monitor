@@ -46,10 +46,15 @@ $updateEndpoint = function () {
 
 ?>
 
-<x-layouts.proto>
+<x-layouts.app>
+    <x-slot name="title">
+        <div class="flex items-center">
+            <span class="text-palette-800 w-full text-lg font-medium lowercase">
+                Editar endpoint
+            </span>
+        </div>
+    </x-slot>
     <div class="p-6">
-        <h1 class="text-xl font-medium">Editar endpoint</h1>
-
         @volt('edit.endpoint')
             <form wire:submit="updateEndpoint" class="space-y-2 mt-5">
                 <input wire:model="location" name="location" type="text" class="block" placeholder="/precios">
@@ -68,4 +73,4 @@ $updateEndpoint = function () {
             </form>
         @endvolt
     </div>
-</x-layouts.proto>
+</x-layouts.app>
