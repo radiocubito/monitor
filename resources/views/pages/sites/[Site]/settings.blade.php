@@ -7,12 +7,15 @@ use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 
 use function Laravel\Folio\middleware;
+use function Laravel\Folio\name;
 use function Laravel\Folio\render;
 use function Livewire\Volt\rules;
 use function Livewire\Volt\state;
 use function Livewire\Volt\with;
 
 middleware(['auth', 'verified']);
+
+name('sites.settings');
 
 state([
     'site' => fn () => $site,
@@ -47,33 +50,19 @@ $createEndpoint = function () {
 
 ?>
 
-<x-layouts.app>
+<x-layouts.site :site="$site">
     <x-slot name="title">
         <div class="flex items-center">
-            <span class="text-palette-800 w-full text-lg font-medium lowercase">
-                Crear endpoint
+            <span class="text-gray-800 w-full text-lg font-medium lowercase">
+                Configuración
             </span>
         </div>
     </x-slot>
-    <div class="p-6">
-        <h1 class="text-xl font-medium">Crear endpoint</h1>
-
-        @volt('create.endpoint')
-            <form wire:submit="createEndpoint" class="space-y-2 mt-5">
-                <input wire:model="location" name="location" type="text" class="block" placeholder="/precios">
-                @error('location')
-                    <div class="text-red-600">{{ $message }}</div>
-                @enderror
-                <select wire:model="frequency" name="frequency" class="block">
-                    @foreach($endpointFrequencies as $endpointFrequency)
-                        <option value="{{ $endpointFrequency->value }}">{{ $endpointFrequency->label() }}</option>
-                    @endforeach
-                </select>
-                @error('frequency')
-                    <div class="text-red-600">{{ $message }}</div>
-                @enderror
-                <button class="border px-3 py-1 border-gray-500">Crear</button>
-            </form>
+    <div class="mx-auto max-w-xl space-y-9 px-5 pt-5">
+        @volt('create-endpoint')
+            <div>
+                Configuración
+            </div>
         @endvolt
     </div>
-</x-layouts.app>
+</x-layouts.site>

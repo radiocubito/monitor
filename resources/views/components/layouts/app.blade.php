@@ -120,7 +120,7 @@
                         {{ $title }}
                     </div>
                 </div>
-                <main class="h-full">
+                <main class="h-[calc(100%-64px)]">
                     {{ $slot }}
                 </main>
             </div>

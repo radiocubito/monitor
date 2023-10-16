@@ -33,7 +33,7 @@ $createSite = function () {
 <x-layouts.app>
     <x-slot name="title">
         <div class="flex items-center">
-            <span class="text-palette-800 w-full text-lg font-medium lowercase">
+            <span class="text-gray-800 w-full text-lg font-medium lowercase">
                 sitios
             </span>
         </div>

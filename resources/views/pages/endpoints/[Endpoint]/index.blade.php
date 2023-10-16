@@ -13,7 +13,7 @@ middleware(['auth', 'verified', 'can:view,endpoint']);
 name('endpoints.show');
 
 $getChecks = function ($endpoint) {
-    return $this->checks = $endpoint->checks;
+    return $this->checks = $endpoint->checks()->limit(100)->get();
 };
 
 state([
@@ -23,14 +23,15 @@ state([
 
 ?>
 
-<x-layouts.app>
+<x-layouts.site :site="$endpoint->site">
     <x-slot name="title">
         <div class="flex items-center">
-            <span class="text-palette-800 w-full text-lg font-medium lowercase">
-            {{ $endpoint->url() }}
+            <span class="text-gray-800 w-full text-lg font-medium lowercase">
+                {{ $endpoint->location }}
             </span>
         </div>
     </x-slot>
+
     <div class="p-6 space-y-5">
         @volt('check-list')
             <table class="border-collapse table-auto w-full">
@@ -66,4 +67,4 @@ state([
             </table>
         @endvolt
     </div>
-</x-layouts.app>
+</x-layouts.site>
