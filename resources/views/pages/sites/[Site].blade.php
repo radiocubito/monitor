@@ -101,16 +101,5 @@ $delete = function (Endpoint $endpoint) {
                 </div>
             </div>
         @endvolt
-
-        @volt('emails')
-            <form wire:submit="updateEmails({{ $site->id }})" class="space-y-2 mt-5 hidden">
-                <h2>Emails para notificaciones:</h2>
-                <input wire:model="emails" name="emails" type="text" class="block">
-                @error('emails')
-                    <div class="text-red-600">{{ $message }}</div>
-                @enderror
-                <button class="border px-3 py-1 border-gray-500">Guardar</button>
-            </form>
-        @endvolt
     </div>
 </x-layouts.site>
