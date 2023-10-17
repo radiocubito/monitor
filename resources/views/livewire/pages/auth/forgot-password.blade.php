@@ -65,7 +65,7 @@ $sendPasswordResetLink = function () {
 
         <div class="mt-4">
             <x-primary-button class="flex justify-center w-full">
-                {{ __('Enviar email para reestablecer contraseña') }}
+                Enviar email para reestablecer contraseña
             </x-primary-button>
         </div>
     </form>

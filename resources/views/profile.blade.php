@@ -16,7 +16,7 @@ $logout = function () {
     <x-slot name="title">
         <div class="flex items-center">
             <span class="text-gray-800 w-full text-lg font-medium lowercase">
-                {{ __('Profile') }}
+                Perfil
             </span>
         </div>
     </x-slot>

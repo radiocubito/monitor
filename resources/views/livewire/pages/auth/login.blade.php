@@ -109,7 +109,7 @@ $login = function () {
 
         <div class="mt-4">
             <x-primary-button class="w-full justify-center">
-                {{ __('Iniciar sesión') }}
+                Iniciar sesión
             </x-primary-button>
         </div>
     </form>
