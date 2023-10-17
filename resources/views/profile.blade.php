@@ -47,7 +47,7 @@ $logout = function () {
         </ul>
     </x-slot>
 
-    <div class="space-y-5 h-full">
+    <div class="space-y-5">
         <div class="mx-auto max-w-xl space-y-9 px-5 pt-5">
             <div class="max-w-xl">
                 <livewire:profile.update-profile-information-form />

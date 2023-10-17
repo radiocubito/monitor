@@ -23,7 +23,7 @@ state([
 
 ?>
 
-<x-layouts.site :site="$endpoint->site">
+<x-layouts.site :site="$endpoint->site" class="bg-gray-50">
     <x-slot name="title">
         <div class="flex items-center">
             <span class="text-gray-800 w-full text-lg font-medium lowercase">
@@ -32,7 +32,7 @@ state([
         </div>
     </x-slot>
 
-    <div class="p-6 space-y-5 bg-gray-50 h-full overflow-y-scroll">
+    <div class="p-6 space-y-5 bg-gray-50">
         @volt('check-list')
             <div>
                 @if ($checks->count() > 0)

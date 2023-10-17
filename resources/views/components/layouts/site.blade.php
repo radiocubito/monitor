@@ -1,6 +1,6 @@
 @props(['site'])
 
-<x-layouts.app :currentSiteId="$site->id">
+<x-layouts.app :currentSiteId="$site->id" {{ $attributes->merge(['class']) }}>
     <x-slot name="title">
         {{ $title }}
     </x-slot>

@@ -34,7 +34,7 @@ $delete = function (Endpoint $endpoint) {
 
 ?>
 
-<x-layouts.site :site="$site">
+<x-layouts.site :site="$site" class="bg-gray-50">
     <x-slot name="title">
         <div class="flex items-center">
             <span class="text-gray-800 w-full text-lg font-medium lowercase">
@@ -43,7 +43,7 @@ $delete = function (Endpoint $endpoint) {
         </div>
     </x-slot>
 
-    <div class="p-6 space-y-5 bg-gray-50 h-full">
+    <div class="p-6 space-y-5">
         @volt('endpoint-list')
             <div>
                 @if($endpoints->count() > 0)

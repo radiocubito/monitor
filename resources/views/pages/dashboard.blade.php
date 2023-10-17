@@ -23,7 +23,7 @@ state([
 
 ?>
 
-<x-layouts.app>
+<x-layouts.app class="bg-gray-50">
     <x-slot name="title">
         <div class="flex items-center">
             <span class="text-gray-800 w-full text-lg font-medium lowercase">
@@ -33,9 +33,9 @@ state([
     </x-slot>
 
     @volt
-        <div class="h-full">
+        <div>
             @if ($sites->count() > 0)
-                <div class="space-y-5 bg-gray-50 h-full">
+                <div class="space-y-5">
                     <div class="mx-auto flex w-full flex-col space-y-2.5 px-4 pt-4 lg:max-w-3xl">
                         <div class="bg-white shadow overflow-hidden sm:rounded-xl p-4">
                             <div class="grid grid-cols-5 gap-x-5">
