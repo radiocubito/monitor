@@ -46,11 +46,11 @@ state([
                         </div>
                         <div class="bg-white shadow overflow-hidden sm:rounded-xl divide-y-[0.5px]">
                             @foreach($sites as $site)
-                                <a href="{{ route('sites.show', ['site' => $site]) }}" class="grid gap-x-5 p-4 hover:bg-gray-50" wire:key="{{ $site->id }}" wire:navigate>
+                                <x-link to="{{ route('sites.show', ['site' => $site]) }}" class="grid gap-x-5 p-4 hover:bg-gray-50" wire:key="{{ $site->id }}">
                                     <div>
                                         <div class="text-gray-800 text-sm font-medium truncate">{{ $site->domain }}</div>
                                     </div>
-                                </a>
+                                </x-link>
                             @endforeach
                         </div>
                     </div>
@@ -69,12 +69,12 @@ state([
                             Mantén todo organizado con un espacio separado para cada uno de tus sitios web.
                         </div>
                         <div class="pt-4">
-                            <a href="/sites/create" class="bg-gray-900 text-white hover:bg-gray-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium focus:outline-none">
+                            <x-link to="/sites/create" class="bg-gray-900 text-white hover:bg-gray-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium focus:outline-none">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="-ml-1 mr-2 h-5 w-5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
                                 </svg>
                                 Crear Sitio Web
-                            </a>
+                            </x-link>
                         </div>
                     </div>
                 </div>

@@ -66,7 +66,7 @@ $delete = function (Endpoint $endpoint) {
                         </div>
                         <div class="bg-white shadow overflow-hidden sm:rounded-xl divide-y-[0.5px]">
                             @foreach($endpoints as $endpoint)
-                                <a href="{{ route('endpoints.show', ['endpoint' => $endpoint]) }}" class="grid grid-cols-5 gap-x-5 p-4 hover:bg-gray-50" wire:key="{{ $endpoint->id }}">
+                                <x-link to="{{ route('endpoints.show', ['endpoint' => $endpoint]) }}" class="grid grid-cols-5 gap-x-5 p-4 hover:bg-gray-50" wire:key="{{ $endpoint->id }}">
                                     <div class="col-span-2 ">
                                         <div class="text-gray-800 text-sm font-medium truncate">{{ $endpoint->location }}</div>
                                         <div class="text-gray-600 text-sm">{{ $endpoint->frequency_label }}</div>
@@ -97,7 +97,7 @@ $delete = function (Endpoint $endpoint) {
                                             -
                                         @endif
                                     </div>
-                                </a>
+                                </x-link>
                             @endforeach
                         </div>
                     </div>
