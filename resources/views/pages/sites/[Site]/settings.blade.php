@@ -49,7 +49,7 @@ $updateEmails = function (Site $site) {
                     Emails para notificaciones
                 </h1>
                 <div class="mt-1.5 text-sm text-gray-500">
-                    Agrega una lista de emails que recibirán notificaciones
+                    Agrega una lista de emails que recibirán notificaciones. Cada email debe estar separado por una coma.
                 </div>
                 <form wire:submit="updateEmails({{ $site->id }})" class="mt-3">
                     <div>
