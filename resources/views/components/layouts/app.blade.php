@@ -113,7 +113,6 @@
                 @endisset
             </div>
             <div @class([
-                    'h-full',
                     'lg:pl-[300px]' => isset($secondaryColumn),
                     'lg:pl-20' => ! isset($secondaryColumn),
                 ])
@@ -131,7 +130,7 @@
                         {{ $title }}
                     </div>
                 </div>
-                <main class="h-[calc(100%-64px)]">
+                <main>
                     {{ $slot }}
                 </main>
             </div>
