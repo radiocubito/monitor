@@ -1,3 +1,5 @@
+@props(['currentSiteId' => null])
+
 <x-layouts.html>
     <div class="bg-white h-full">
         <div class="h-full" x-data="{ open: false }" @keydown.window.escape="open = false">
@@ -72,7 +74,15 @@
                                 <ul role="list" class="space-y-4">
                                     @foreach(auth()->user()->sites as $site)
                                         <li>
-                                            <a href="/sites/{{ $site->id }}" class="flex h-10 w-10 items-center justify-center text-gray-600 hover:text-indigo-500 rounded-full">
+                                            <a
+                                                href="/sites/{{ $site->id }}"
+                                                @class([
+                                                    'flex h-10 w-10 items-center justify-center rounded-full',
+                                                    'text-indigo-500 ring-indigo-300 ring' => $currentSiteId === $site->id,
+                                                    'text-gray-600 hover:text-indigo-500' =>  $currentSiteId !== $site->id,
+                                                ])
+                                                wire:navigate
+                                            >
                                                 <span class="inline-block w-full text-center align-middle font-mono">{{ $site->shortLabel() }}</span>
                                             </a>
                                         </li>

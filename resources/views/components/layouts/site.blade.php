@@ -1,6 +1,6 @@
 @props(['site'])
 
-<x-layouts.app>
+<x-layouts.app :currentSiteId="$site->id">
     <x-slot name="title">
         {{ $title }}
     </x-slot>
