@@ -46,7 +46,7 @@ state([
                         </div>
                         <div class="bg-white shadow overflow-hidden sm:rounded-xl divide-y-[0.5px]">
                             @foreach($sites as $site)
-                                <a href="{{ route('sites.show', ['site' => $site]) }}" class="grid gap-x-5 p-4 hover:bg-gray-50" wire:key="{{ $site->id }}">
+                                <a href="{{ route('sites.show', ['site' => $site]) }}" class="grid gap-x-5 p-4 hover:bg-gray-50" wire:key="{{ $site->id }}" wire:navigate>
                                     <div>
                                         <div class="text-gray-800 text-sm font-medium truncate">{{ $site->domain }}</div>
                                     </div>

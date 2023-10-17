@@ -32,39 +32,42 @@ state([
         </div>
     </x-slot>
 
-    <div class="p-6 space-y-5">
+    <div class="p-6 space-y-5 bg-gray-50 h-full overflow-y-scroll">
         @volt('check-list')
-            <table class="border-collapse table-auto w-full">
-                <thead>
-                    <tr>
-                        <th class="text-left">Revisado en</th>
-                        <th class="text-left">Código de respuesta</th>
-                        <th class="text-left">Cuerpo de respuesta</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="mx-auto flex w-full flex-col space-y-2.5 px-4 pt-4 lg:max-w-3xl">
+                <div class="bg-white shadow overflow-hidden sm:rounded-xl p-4">
+                    <div class="grid grid-cols-3 gap-x-3">
+                        <div class="col-span-2">
+                            <span class="text-gray-800 text-sm font-medium">Revisado en</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-800 text-sm font-medium">Código de respuesta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow overflow-hidden sm:rounded-xl divide-y-[0.5px]">
                     @foreach($checks as $check)
-                        <tr wire:key="{{ $check->id }}">
-                            <td>
-                                {{ $check->created_at->toDateTimeString() }}
-                            </td>
-                            <td>
+                        <div class="grid grid-cols-3 gap-x-5 p-4" wire:key="{{ $endpoint->id }}">
+                            <div class="col-span-2">
+                                <div class="text-gray-800 text-sm font-medium truncate">{{ $check->created_at->toDateTimeString() }}</div>
+                            </div>
+                            <div class="text-gray-600 text-sm">
                                 <span @class([
                                     'text-green-600' => $check->isSuccessful(),
                                     'text-red-600' => ! $check->isSuccessful(),
                                 ])>
                                     {{ $check->response_code }} {{ $check->statusText() }}
                                 </span>
-                            </td>
-                            <td>
-                                @if ($check->response_body)
-                                    <textarea rows="10">{{ $check->response_body }}</textarea>
-                                @endif
-                            </td>
-                        </tr>
+                            </div>
+
+                            @if ($check->response_body)
+                                <textarea rows="10" class="hidden">{{ $check->response_body }}</textarea>
+                            @endif
+                        </div>
                     @endforeach
-                </tbody>
-            </table>
+                </div>
+            </div>
         @endvolt
     </div>
 </x-layouts.site>

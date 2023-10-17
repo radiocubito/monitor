@@ -1,17 +1,16 @@
 <?php
 
 use App\Enums\EndpointFrequency;
+use App\Models\Site;
 use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
+use Spatie\ValidationRules\Rules\Delimited;
 
 use function Laravel\Folio\middleware;
 use function Laravel\Folio\name;
-use function Laravel\Folio\render;
-use function Livewire\Volt\rules;
 use function Livewire\Volt\state;
-use function Livewire\Volt\with;
 
 middleware(['auth', 'verified']);
 
@@ -19,33 +18,17 @@ name('sites.settings');
 
 state([
     'site' => fn () => $site,
-    'location' => '',
-    'frequency' => EndpointFrequency::FIVE_MINUTES->value,
+    'emails' => fn () => $this->site->notification_emails,
 ]);
 
-rules([
-    'location' => ['required'],
-    'frequency' => ['required', new Enum(EndpointFrequency::class)],
-]);
-
-with(fn () => ['endpointFrequencies' => EndpointFrequency::cases()]);
-
-$createEndpoint = function () {
-    $this->validate();
-
-    $this->authorize('storeEndpoint', $this->site);
-
-    $parsed = parse_url($this->site->url() . '/' . $this->location);
-
-    $this->location = '/' . trim(trim(Arr::get($parsed, 'path'), '/') . '?' . Arr::get($parsed, 'query'), '?');
-
-    $this->site->endpoints()->create([
-        'location' => $this->location,
-        'frequency' => $this->frequency,
-        'next_check' => now()->addSeconds($this->frequency),
+$updateEmails = function (Site $site) {
+    $validated = $this->validate([
+        'emails' => [new Delimited('email')],
     ]);
 
-    return to_route('sites.show', ['site' => $this->site]);
+    $site->update([
+        'notification_emails' => $this->emails,
+    ]);
 };
 
 ?>
@@ -58,10 +41,26 @@ $createEndpoint = function () {
             </span>
         </div>
     </x-slot>
+
     <div class="mx-auto max-w-xl space-y-9 px-5 pt-5">
-        @volt('create-endpoint')
+        @volt('emails')
             <div>
-                Configuración
+                <h1 class="text-lg font-medium text-gray-800">
+                    Emails para notificaciones
+                </h1>
+                <div class="mt-1.5 text-sm text-gray-500">
+                    Agrega una lista de emails que recibirán notificaciones
+                </div>
+                <form wire:submit="updateEmails({{ $site->id }})" class="mt-3">
+                    <div>
+                        <x-text-input wire:model="emails" id="emails" class="block mt-1 w-full" type="text" name="emails" placeholder="p. ej. oliver@radiocubito.com, oliver@google.com" />
+                        <x-input-error :messages="$errors->get('emails')" class="mt-3" />
+                    </div>
+
+                    <div class="mt-4">
+                        <x-primary-button>Guardar</x-primary-button>
+                    </div>
+                </form>
             </div>
         @endvolt
     </div>

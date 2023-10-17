@@ -32,19 +32,6 @@ $delete = function (Endpoint $endpoint) {
     $this->getEndpoints($this->site);
 };
 
-$updateEmails = function (Site $site) {
-    // dd('jhsdf');
-    // $this->authorize('delete', $endpoint);
-
-    $validated = $this->validate([
-        'emails' => [new Delimited('email')],
-    ]);
-
-    $site->update([
-        'notification_emails' => $this->emails,
-    ]);
-};
-
 ?>
 
 <x-layouts.site :site="$site">
@@ -76,14 +63,14 @@ $updateEmails = function (Site $site) {
                     </div>
                 </div>
 
-                <div class="bg-white shadow overflow-hidden sm:rounded-xl">
+                <div class="bg-white shadow overflow-hidden sm:rounded-xl divide-y-[0.5px]">
                     @foreach($endpoints as $endpoint)
-                        <a href="{{ route('endpoints.show', ['endpoint' => $endpoint]) }}" class="grid grid-cols-5 gap-x-5 p-4" wire:key="{{ $endpoint->id }}">
+                        <a href="{{ route('endpoints.show', ['endpoint' => $endpoint]) }}" class="grid grid-cols-5 gap-x-5 p-4 hover:bg-gray-50" wire:key="{{ $endpoint->id }}">
                             <div class="col-span-2 ">
                                 <div class="text-gray-800 text-sm font-medium truncate">{{ $endpoint->location }}</div>
                                 <div class="text-gray-600 text-sm">{{ $endpoint->frequency_label }}</div>
                             </div>
-                            <div class="text-gray-600 text-sm">
+                            <div class="text-gray-600 text-sm flex items-center">
                                 @if($endpoint->check)
                                     {{ $endpoint->check->created_at->toDateTimeString() }}
                                 @else

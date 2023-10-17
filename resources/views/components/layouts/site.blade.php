@@ -39,7 +39,7 @@
                     <div class="text-base font-medium">
                         endpoints
                     </div>
-                    <a href="/sites/{{ $site->id }}/create-endpoint" class="flex items-center hover:text-indigo-500">
+                    <a href="/sites/{{ $site->id }}/create-endpoint" class="flex items-center hover:text-indigo-500" wire:navigate>
                         <svg class="h-[22px] w-[22px] p-px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h7m7 0h-7m0 0V5m0 7v7"></path>
                         </svg>
