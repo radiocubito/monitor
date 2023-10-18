@@ -12,7 +12,7 @@ $logout = function () {
 ?>
 
 <div>
-    <x-nav-link wire:click.prevent="logout" class="flex" href="#">
+    <button wire:click="logout" class="flex text-gray-600 hover:text-indigo-500 align-middle font-mono text-sm rounded-xl px-2.5 py-2.5 transition duration-150 ease-in-out">
         <span>cerrar sesión</span>
-    </x-nav-link>
+    </button>
 </div>
