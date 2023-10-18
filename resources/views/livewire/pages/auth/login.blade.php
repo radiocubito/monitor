@@ -101,7 +101,7 @@ $login = function () {
             </label>
 
             @if (Route::has('password.request'))
-                <x-link href="{{ route('password.request') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <x-link to="{{ route('password.request') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     ¿Olvidaste tu contraseña?
                 </x-link>
             @endif

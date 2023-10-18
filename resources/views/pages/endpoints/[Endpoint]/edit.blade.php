@@ -41,7 +41,10 @@ $updateEndpoint = function () {
         'frequency' => $this->frequency,
     ]);
 
-    return to_route('sites.show', ['site' => $this->endpoint->site]);
+    session()->flash('flash.toast', 'Endpoint editado');
+    session()->flash('flash.toastType', 'success');
+
+    $this->redirect(route('sites.show', ['site' => $this->endpoint->site]), navigate: true);
 };
 
 ?>

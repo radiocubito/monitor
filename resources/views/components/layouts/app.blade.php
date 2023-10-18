@@ -75,5 +75,5 @@
             </main>
         </div>
     </div>
-    <x-toast-notification />
+    <x-toast />
 </x-layouts.html>

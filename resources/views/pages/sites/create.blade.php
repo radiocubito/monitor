@@ -24,6 +24,9 @@ $createSite = function () {
         'domain' => Arr::get($parsed, 'host'),
     ]);
 
+    session()->flash('flash.toast', 'Nuevo sitio creado');
+    session()->flash('flash.toastType', 'success');
+
     $this->redirect(route('dashboard'), navigate: true);
 }
 

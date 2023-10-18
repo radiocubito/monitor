@@ -42,7 +42,10 @@ $createEndpoint = function () {
         'next_check' => now()->addSeconds($this->frequency),
     ]);
 
-    return to_route('sites.show', ['site' => $this->site]);
+    session()->flash('flash.toast', 'Nuevo endpoint creado');
+    session()->flash('flash.toastType', 'success');
+
+    $this->redirect(route('sites.show', ['site' => $this->site]), navigate: true);
 };
 
 ?>
