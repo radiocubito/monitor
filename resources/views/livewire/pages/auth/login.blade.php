@@ -94,7 +94,7 @@ $login = function () {
         </div>
 
         <!-- Remember Me -->
-        <div class="flex justify-between mt-4">
+        <div class="flex gap-4 flex-col-reverse sm:flex-row justify-between mt-4">
             <label for="remember" class="inline-flex items-center">
                 <input wire:model="remember" id="remember" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ml-2 text-sm text-gray-600">Mantener sesión iniciada</span>

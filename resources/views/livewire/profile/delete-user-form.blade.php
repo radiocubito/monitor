@@ -52,7 +52,7 @@ $deleteUser = function () {
 
                 <x-text-input
                     wire:model="password"
-                    id="password"
+                    id="confirm-password"
                     name="password"
                     type="password"
                     class="mt-1 block w-3/4"

@@ -10,8 +10,8 @@
                     @click.away="open = false"
                     @class([
                         'relative mr-16 flex w-full flex-1',
-                        'max-w-xs' => isset($secondaryColumn),
-                        "max-w-[5rem]" => !isset($secondaryColumn),
+                        'max-w-xs' => isset($responsiveSecondaryColumn),
+                        "max-w-[5rem]" => !isset($responsiveSecondaryColumn),
                     ])
                     x-transition:enter="transition ease-in-out duration-300 transform"
                     x-transition:enter-start="-translate-x-full"
@@ -32,9 +32,9 @@
                     <div class="flex flex-col gap-y-5 overflow-y-auto bg-white px-5 pb-5 pt-3">
                         <x-navigation :currentSiteId="$currentSiteId" />
                     </div>
-                    @isset($secondaryColumn)
+                    @isset($responsiveSecondaryColumn)
                         <div class="flex grow flex-col gap-y-5 overflow-y-auto border-l-[0.5px] border-gray-200 bg-white px-4 pb-5">
-                            {{ $secondaryColumn }}
+                            {{ $responsiveSecondaryColumn }}
                         </div>
                     @endisset
                 </div>
