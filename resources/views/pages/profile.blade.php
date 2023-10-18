@@ -11,7 +11,6 @@ $logout = function () {
 
 ?>
 
-
 <x-layouts.app>
     <x-slot name="title">
         <div class="flex items-center">

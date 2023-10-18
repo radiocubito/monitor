@@ -60,20 +60,24 @@ $createEndpoint = function () {
     </x-slot>
     <div class="mx-auto max-w-xl space-y-9 px-5 pt-5">
         @volt('create-endpoint')
-            <div>
-                <h1 class="text-lg font-medium text-gray-800">
-                    Crear Endpoint
-                </h1>
-                <div class="mt-1.5 text-sm text-gray-500">
-                    Agrega un nuevo endpoint al sitio web
-                </div>
-                <form wire:submit="createEndpoint" class="mt-3">
+            <section>
+                <header>
+                    <h1 class="text-lg font-medium text-gray-800">
+                        Crear Endpoint
+                    </h1>
+
+                    <div class="mt-1 text-sm text-gray-500">
+                        Agrega un nuevo endpoint al sitio web
+                    </div>
+                </header>
+
+                <form wire:submit="createEndpoint" class="mt-6 space-y-6">
                     <div>
                         <x-text-input wire:model="location" id="location" class="block mt-1 w-full" type="text" name="location" placeholder="p. ej. /precios" />
                         <x-input-error :messages="$errors->get('location')" class="mt-3" />
                     </div>
 
-                    <div class="mt-4">
+                    <div>
                         <x-select-input wire:model="frequency" id="frequency" class="block mt-1 w-full" type="text" name="frequency">
                             @foreach($endpointFrequencies as $endpointFrequency)
                                 <option value="{{ $endpointFrequency->value }}">{{ $endpointFrequency->label() }}</option>
@@ -82,11 +86,11 @@ $createEndpoint = function () {
                         <x-input-error :messages="$errors->get('frequency')" class="mt-3" />
                     </div>
 
-                    <div class="mt-4">
+                    <div>
                         <x-primary-button>Crear</x-primary-button>
                     </div>
                 </form>
-            </div>
+            </section>
         @endvolt
     </div>
 </x-layouts.site>

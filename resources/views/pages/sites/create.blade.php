@@ -43,24 +43,28 @@ $createSite = function () {
     </x-slot>
     <div class="mx-auto max-w-xl space-y-9 px-5 pt-5">
         @volt('create.site')
-            <div>
-                <h1 class="text-lg font-medium text-gray-800">
-                    Crear Sitio Web
-                </h1>
-                <div class="mt-1.5 text-sm text-gray-500">
-                    Agrega un nuevo sitio web a tu cuenta
-                </div>
-                <form wire:submit="createSite" class="mt-3">
+            <section>
+                <header>
+                    <h1 class="text-lg font-medium text-gray-800">
+                        Crear Sitio Web
+                    </h1>
+
+                    <div class="mt-1 text-sm text-gray-500">
+                        Agrega un nuevo sitio web a tu cuenta
+                    </div>
+                </header>
+
+                <form wire:submit="createSite" class="mt-6 space-y-6">
                     <div>
                         <x-text-input wire:model="domain" id="domain" class="block mt-1 w-full" type="text" name="domain" placeholder="p. ej. https://radiocubito.com" />
                         <x-input-error :messages="$errors->get('domain')" class="mt-3" />
                     </div>
 
-                    <div class="mt-4">
+                    <div>
                         <x-primary-button>Crear</x-primary-button>
                     </div>
                 </form>
-            </div>
+            </section>
         @endvolt
     </div>
 </x-layouts.app>
