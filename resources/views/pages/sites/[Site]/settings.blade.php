@@ -12,7 +12,7 @@ use function Laravel\Folio\middleware;
 use function Laravel\Folio\name;
 use function Livewire\Volt\state;
 
-middleware(['auth', 'verified']);
+middleware(['auth', 'verified', 'can:update,site']);
 
 name('sites.settings');
 
@@ -25,6 +25,8 @@ $updateEmails = function (Site $site) {
     $validated = $this->validate([
         'emails' => [new Delimited('email')],
     ]);
+
+    $this->authorize('update', $this->site);
 
     $site->update([
         'notification_emails' => $this->emails,

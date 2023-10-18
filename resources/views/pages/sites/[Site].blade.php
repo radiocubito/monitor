@@ -10,7 +10,7 @@ use function Laravel\Folio\middleware;
 use function Laravel\Folio\name;
 use function Livewire\Volt\state;
 
-middleware(['auth', 'verified']);
+middleware(['auth', 'verified', 'can:view,site']);
 
 name('sites.show');
 

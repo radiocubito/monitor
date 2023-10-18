@@ -12,7 +12,7 @@ use function Livewire\Volt\rules;
 use function Livewire\Volt\state;
 use function Livewire\Volt\with;
 
-middleware(['auth', 'verified']);
+middleware(['auth', 'verified', 'can:storeEndpoint,site']);
 
 state([
     'site' => fn () => $site,

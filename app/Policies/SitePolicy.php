@@ -15,6 +15,16 @@ class SitePolicy
         //
     }
 
+    public function view(User $user, Site $site): bool
+    {
+        return $user->id === $site->user_id;
+    }
+
+    public function update(User $user, Site $site): bool
+    {
+        return $user->id === $site->user_id;
+    }
+
     public function storeEndpoint(User $user, Site $site)
     {
         return $user->id === $site->user_id;
