@@ -36,7 +36,7 @@ class EndpointRecoveredNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->subject($this->endpoint->location . ' recovered')
+                    ->subject($this->endpoint->location . ' se ha recuperado')
                     ->markdown('email.endpoint_recovered', [
                         'endpoint' => $this->endpoint,
                     ]);

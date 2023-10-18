@@ -1,1 +1,1 @@
-Endpoint {{ $endpoint->id }} went down.
+Endpoint "{{ $endpoint->location }}" se ha caído.

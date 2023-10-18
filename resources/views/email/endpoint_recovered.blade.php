@@ -1,1 +1,1 @@
-Endpoint {{ $endpoint->id }} recovered.
+Endpoint "{{ $endpoint->location }}" se ha recuperdado.
