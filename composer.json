@@ -17,10 +17,10 @@
         "spatie/laravel-short-schedule": "^1.5",
         "spatie/laravel-validation-rules": "^3.3",
         "symfony/http-client": "^6.3",
-        "symfony/mailgun-mailer": "^6.3"
+        "symfony/mailgun-mailer": "^6.3",
+        "fakerphp/faker": "^1.9.1"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
