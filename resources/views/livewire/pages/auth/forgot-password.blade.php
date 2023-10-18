@@ -36,8 +36,20 @@ $sendPasswordResetLink = function () {
 ?>
 
 <div>
+    <div class="mb-6">
+        <h1 class="text-gray-900 text-3xl font-extrabold">
+            Reestablece tu contraseña
+        </h1>
+
+        <p class="text-gray-600 mt-2 text-sm">
+            O <x-link to="{{ route('login') }}" class="text-indigo-600 hover:text-indigo-400 font-medium transition-all duration-300">
+                accede a tu cuenta
+            </x-link>
+        </p>
+    </div>
+
     <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+        ¿Se te olvidó la contraseña? No te preocupes. Solo tienes que indicarnos tu email y te enviaremos un enlace para restablecer la contraseña que te permitirá elegir una nueva.
     </div>
 
     <!-- Session Status -->
@@ -46,14 +58,14 @@ $sendPasswordResetLink = function () {
     <form wire:submit="sendPasswordResetLink">
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" value="Email" />
             <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
+        <div class="mt-4">
+            <x-primary-button class="flex justify-center w-full">
+                Enviar email para reestablecer contraseña
             </x-primary-button>
         </div>
     </form>

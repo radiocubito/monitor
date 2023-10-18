@@ -59,20 +59,26 @@ $login = function () {
 ?>
 
 <div>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div>
+        <h1 class="text-gray-900 text-3xl font-extrabold">
+            Acceder a tu cuenta
+        </h1>
+    </div>
 
-    <form wire:submit="login">
+    <!-- Session Status -->
+    <x-auth-session-status class="mt-6" :status="session('status')" />
+
+    <form class="mt-6" wire:submit="login">
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" value="Email" />
             <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" value="Contraseña" />
 
             <x-text-input wire:model="password" id="password" class="block mt-1 w-full"
                             type="password"
@@ -83,22 +89,22 @@ $login = function () {
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
+        <div class="flex gap-4 flex-col-reverse sm:flex-row justify-between mt-4">
             <label for="remember" class="inline-flex items-center">
                 <input wire:model="remember" id="remember" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                <span class="ml-2 text-sm text-gray-600">Mantener sesión iniciada</span>
             </label>
+
+            @if (Route::has('password.request'))
+                <x-link to="{{ route('password.request') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    ¿Olvidaste tu contraseña?
+                </x-link>
+            @endif
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}" wire:navigate>
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
+        <div class="mt-4">
+            <x-primary-button class="w-full justify-center">
+                Iniciar sesión
             </x-primary-button>
         </div>
     </form>
