@@ -63,11 +63,6 @@ $login = function () {
         <h1 class="text-gray-900 text-3xl font-extrabold">
             Acceder a tu cuenta
         </h1>
-        <p class="text-gray-600 mt-2 text-sm">
-            O <x-link to="{{ route('register') }}" class="text-indigo-600 hover:text-indigo-400 font-medium transition-all duration-300">
-                crear una cuenta nueva
-            </x-link>
-        </p>
     </div>
 
     <!-- Session Status -->
