@@ -37,14 +37,14 @@ state([
             @if ($sites->count() > 0)
                 <div class="space-y-5">
                     <div class="mx-auto flex w-full flex-col space-y-2.5 px-4 pt-4 lg:max-w-3xl">
-                        <div class="bg-white shadow overflow-hidden sm:rounded-xl p-4">
+                        <div class="bg-white shadow overflow-hidden rounded-xl p-4">
                             <div class="grid grid-cols-5 gap-x-5">
                                 <div class="truncate col-span-2">
                                     <span class="text-gray-900 truncate font-medium">Todos los Sitios</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white shadow overflow-hidden sm:rounded-xl divide-y-[0.5px]">
+                        <div class="bg-white shadow overflow-hidden rounded-xl divide-y-[0.5px]">
                             @foreach($sites as $site)
                                 <x-link to="{{ route('sites.show', ['site' => $site]) }}" class="grid gap-x-5 p-4 hover:bg-gray-50" wire:key="{{ $site->id }}">
                                     <div>

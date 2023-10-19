@@ -43,17 +43,17 @@ $delete = function (Endpoint $endpoint) {
         </div>
     </x-slot>
 
-    <div class="p-6 space-y-5">
-        @volt('endpoint-list')
-            <div>
-                @if($endpoints->count() > 0)
+    @volt('endpoint-list')
+        <div>
+            @if($endpoints->count() > 0)
+                <div class="space-y-5">
                     <div class="mx-auto flex w-full flex-col space-y-2.5 px-4 pt-4 lg:max-w-3xl">
-                        <div class="bg-white shadow overflow-hidden sm:rounded-xl p-4">
-                            <div class="grid grid-cols-5 gap-x-5">
+                        <div class="bg-white shadow overflow-hidden rounded-xl p-4">
+                            <div class="grid grid-cols-4 md:grid-cols-5 gap-x-5">
                                 <div class="truncate col-span-2">
                                     <span class="text-gray-900 truncate font-medium">Endpoint</span>
                                 </div>
-                                <div>
+                                <div class="hidden md:block">
                                     <span class="text-gray-800 text-sm font-medium">Última revisión</span>
                                 </div>
                                 <div>
@@ -64,14 +64,14 @@ $delete = function (Endpoint $endpoint) {
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white shadow overflow-hidden sm:rounded-xl divide-y-[0.5px]">
+                        <div class="bg-white shadow overflow-hidden rounded-xl divide-y-[0.5px]">
                             @foreach($endpoints as $endpoint)
-                                <x-link to="{{ route('endpoints.show', ['endpoint' => $endpoint]) }}" class="grid grid-cols-5 gap-x-5 p-4 hover:bg-gray-50" wire:key="{{ $endpoint->id }}">
+                                <x-link to="{{ route('endpoints.show', ['endpoint' => $endpoint]) }}" class="grid grid-cols-4 md:grid-cols-5 gap-x-5 p-4 hover:bg-gray-50" wire:key="{{ $endpoint->id }}">
                                     <div class="col-span-2 ">
                                         <div class="text-gray-800 text-sm font-medium truncate">{{ $endpoint->location }}</div>
                                         <div class="text-gray-600 text-sm">{{ $endpoint->frequency_label }}</div>
                                     </div>
-                                    <div class="text-gray-600 text-sm flex items-center">
+                                    <div class="hidden md:flex text-gray-600 text-sm items-center">
                                         @if($endpoint->check)
                                             {{ $endpoint->check->created_at->toDateTimeString() }}
                                         @else
@@ -101,8 +101,8 @@ $delete = function (Endpoint $endpoint) {
                             @endforeach
                         </div>
                     </div>
-                @endif
-            </div>
-        @endvolt
-    </div>
+                </div>
+            @endif
+        </div>
+    @endvolt
 </x-layouts.site>

@@ -32,12 +32,12 @@ state([
         </div>
     </x-slot>
 
-    <div class="p-6 space-y-5 bg-gray-50">
-        @volt('check-list')
-            <div>
-                @if ($checks->count() > 0)
+    @volt('check-list')
+        <div>
+            @if ($checks->count() > 0)
+                <div class="space-y-5">
                     <div class="mx-auto flex w-full flex-col space-y-2.5 px-4 pt-4 lg:max-w-3xl">
-                        <div class="bg-white shadow overflow-hidden sm:rounded-xl p-4">
+                        <div class="bg-white shadow overflow-hidden rounded-xl p-4">
                             <div class="grid grid-cols-3 gap-x-3">
                                 <div class="col-span-2">
                                     <span class="text-gray-800 text-sm font-medium">Revisado en</span>
@@ -47,7 +47,7 @@ state([
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white shadow overflow-hidden sm:rounded-xl divide-y-[0.5px]">
+                        <div class="bg-white shadow overflow-hidden rounded-xl divide-y-[0.5px]">
                             @foreach($checks as $check)
                                 <div class="grid grid-cols-3 gap-x-5 p-4" wire:key="{{ $endpoint->id }}">
                                     <div class="col-span-2">
@@ -68,8 +68,8 @@ state([
                             @endforeach
                         </div>
                     </div>
-                @endif
-            </div>
-        @endvolt
-    </div>
+                </div>
+            @endif
+        </div>
+    @endvolt
 </x-layouts.site>
