@@ -37,7 +37,7 @@ state([
             @if ($checks->count() > 0)
                 <div class="space-y-5 bg-gray-50">
                     <div class="mx-auto flex w-full flex-col space-y-2.5 px-4 pt-4 lg:max-w-3xl">
-                        <div class="bg-white shadow overflow-hidden rounded-xl p-4">
+                        <div class="bg-white shadow overflow-hidden rounded-md p-4">
                             <div class="grid grid-cols-3 gap-x-3">
                                 <div class="col-span-2">
                                     <span class="text-gray-800 text-sm font-medium">Revisado en</span>
