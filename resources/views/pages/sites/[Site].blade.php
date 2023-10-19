@@ -24,14 +24,6 @@ state([
     'emails' => fn () => $this->site->notification_emails,
 ]);
 
-$delete = function (Endpoint $endpoint) {
-    $this->authorize('delete', $endpoint);
-
-    $endpoint->delete();
-
-    $this->getEndpoints($this->site);
-};
-
 ?>
 
 <x-layouts.site :site="$site" class="bg-gray-50">

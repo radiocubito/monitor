@@ -41,15 +41,15 @@ $updateEndpoint = function () {
         'frequency' => $this->frequency,
     ]);
 
-    session()->flash('flash.toast', 'Endpoint editado');
+    session()->flash('flash.toast', 'Endpoint guardado');
     session()->flash('flash.toastType', 'success');
 
-    $this->redirect(route('sites.show', ['site' => $this->endpoint->site]), navigate: true);
+    $this->redirect(route('endpoint.edit', ['endpoint' => $this->endpoint]), navigate: true);
 };
 
 ?>
 
-<x-layouts.app>
+<x-layouts.site :site="$endpoint->site">
     <x-slot name="title">
         <div class="flex items-center">
             <span class="text-gray-800 w-full text-lg font-medium lowercase">
@@ -57,23 +57,39 @@ $updateEndpoint = function () {
             </span>
         </div>
     </x-slot>
-    <div class="p-6">
+    <div class="mx-auto max-w-xl space-y-9 px-5 pt-5">
         @volt('edit.endpoint')
-            <form wire:submit="updateEndpoint" class="space-y-2 mt-5">
-                <input wire:model="location" name="location" type="text" class="block" placeholder="/precios">
-                @error('location')
-                    <div class="text-red-600">{{ $message }}</div>
-                @enderror
-                <select wire:model="frequency" name="frequency" class="block">
-                    @foreach($endpointFrequencies as $endpointFrequency)
-                        <option value="{{ $endpointFrequency->value }}">{{ $endpointFrequency->label() }}</option>
-                    @endforeach
-                </select>
-                @error('frequency')
-                    <div class="text-red-600">{{ $message }}</div>
-                @enderror
-                <button class="border px-3 py-1 border-gray-500">Guardar</button>
-            </form>
+            <section>
+                <header>
+                    <h1 class="text-lg font-medium text-gray-800">
+                        Editar endpoint
+                    </h1>
+
+                    <div class="mt-1 text-sm text-gray-500">
+                        Actualiza la información del endpoint
+                    </div>
+                </header>
+
+                <form wire:submit="updateEndpoint" class="mt-6 space-y-6">
+                    <div>
+                        <x-text-input wire:model="location" id="location" class="block mt-1 w-full" type="text" name="location" placeholder="p. ej. /precios" />
+                        <x-input-error :messages="$errors->get('location')" class="mt-3" />
+                    </div>
+
+                    <div>
+                        <x-select-input wire:model="frequency" id="frequency" class="block mt-1 w-full" type="text" name="frequency">
+                            @foreach($endpointFrequencies as $endpointFrequency)
+                                <option value="{{ $endpointFrequency->value }}">{{ $endpointFrequency->label() }}</option>
+                            @endforeach
+                        </x-select-input>
+                        <x-input-error :messages="$errors->get('frequency')" class="mt-3" />
+                    </div>
+
+                    <div>
+                        <x-primary-button>Guardar</x-primary-button>
+                    </div>
+                </form>
+            </section>
         @endvolt
     </div>
-</x-layouts.app>
+</x-layouts.site>
