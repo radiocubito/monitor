@@ -13,7 +13,7 @@ middleware(['auth', 'verified', 'can:view,endpoint']);
 name('endpoints.show');
 
 $getChecks = function ($endpoint) {
-    return $this->checks = $endpoint->checks()->limit(100)->get();
+    return $this->checks = $endpoint->checks()->latest()->limit(100)->get();
 };
 
 state([
