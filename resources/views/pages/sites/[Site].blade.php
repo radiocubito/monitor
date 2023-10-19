@@ -57,7 +57,7 @@ $delete = function (Endpoint $endpoint) {
                                     <span class="text-gray-800 text-sm font-medium">Última revisión</span>
                                 </div>
                                 <div>
-                                    <span class="text-gray-800 text-sm font-medium">Último estado</span>
+                                    <span class="text-gray-800 text-sm font-medium">Estado</span>
                                 </div>
                                 <div>
                                     <span class="text-gray-800 text-sm font-medium">Disponibilidad</span>

@@ -43,7 +43,7 @@ state([
                                     <span class="text-gray-800 text-sm font-medium">Revisado en</span>
                                 </div>
                                 <div>
-                                    <span class="text-gray-800 text-sm font-medium">Código de respuesta</span>
+                                    <span class="text-gray-800 text-sm font-medium">Respuesta</span>
                                 </div>
                             </div>
                         </div>
