@@ -105,7 +105,7 @@ $deleteEndpoint = function (Endpoint $endpoint) {
                                 Endpoints del sitio
                             </h2>
                         </header>
-                        <div class="rounded-xl border flex flex-col divide-y-[0.5px]">
+                        <div class="rounded-md border flex flex-col divide-y-[0.5px]">
                             @foreach($site->endpoints as $endpoint)
                                 <div class="p-4 flex gap-4">
                                     <div class="text-gray-600 text-sm font-medium truncate flex-1">
