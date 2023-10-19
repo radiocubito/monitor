@@ -102,7 +102,7 @@ $deleteEndpoint = function (Endpoint $endpoint) {
                     <section class="space-y-6">
                         <header>
                             <h2 class="text-lg font-medium text-gray-800">
-                                Endpoints
+                                Endpoints del sitio
                             </h2>
                         </header>
                         <div class="rounded-xl border flex flex-col divide-y-[0.5px]">
