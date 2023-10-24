@@ -6,7 +6,8 @@ Y enviar notificaciones por email cuando un sitio se reporta caído.
 
 ### Requisitos
 
-- Un servidor con PHP versión 8.1 o superior
+- Un servidor con PHP versión 8.1 o superior y Node.js versión 16 o superior
+- Una base de datos
 
 ### Obtener el código fuente e instalar las dependencias
 
