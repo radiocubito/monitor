@@ -36,10 +36,9 @@ class EndpointWentDownNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->subject($this->endpoint->location . ' se ha caído')
-                    ->markdown('email.endpoint_down', [
-                        'endpoint' => $this->endpoint,
-                    ]);
+                    ->error()
+                    ->subject('Endpoint caído, ' . $this->endpoint->site->domain . $this->endpoint->location)
+                    ->line('El endpoint `' . $this->endpoint->site->domain . $this->endpoint->location . '` se ha caído.');
     }
 
     /**

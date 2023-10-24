@@ -6,7 +6,7 @@
 @if ($level === 'error')
 ¡Ups!
 @else
-Hola
+Hola,
 @endif
 @endif
 
