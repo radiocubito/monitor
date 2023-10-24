@@ -22,7 +22,7 @@ npm install
 
 ### Configuración
 
-A continuación, tendrás que crear una base de datos y proporcionar las credenciales dentro del archivo `.env`. Consulta la [documentación de Laravel](https://laravel.com/docs/10.x/database#configuration) para obtener más información sobre cómo hacerlo. Puedes copiar el archivo .env.example para empezar y generar una clave de aplicación:
+A continuación, tendrás que crear una base de datos y proporcionar las credenciales dentro del archivo `.env`. Consulta la [documentación de Laravel](https://laravel.com/docs/10.x/database#configuration) para obtener más información sobre cómo hacerlo. Puedes copiar el archivo `.env.example` para empezar y generar una clave para la aplicación:
 
 ```bash
 cp .env.example .env
@@ -42,25 +42,19 @@ php artisan migrate
 
 ### Arrancar la aplicación
 
-Ejecutar el Queue Worker.
+Ejecutar el _queue worker_.
 
 ```bash
 php artisan queue:work
 ```
 
-Ejecutar el cron.
-
-```bash
-php artisan queue:work
-```
-
-Iniciar el short scheduler.
+Iniciar el _short scheduler_.
 
 ```bash
 php artisan short-schedule:run
 ```
 
-Por último, puedes iniciar el servidor de desarrollo cuando lo necesites:
+Por último, puedes iniciar el servidor de desarrollo cuando sea necesario.
 
 ```bash
 php artisan serve
